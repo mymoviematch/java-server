@@ -3,6 +3,11 @@ package sk.ondrejhirjak.module;
 import sk.ondrejhirjak.server.Configuration;
 
 
+/**
+ * Generic server module interface with init, start and stop methods.
+ *
+ * @author Ondrej Hirjak
+ */
 public interface ServerModule {
 
     void init(Configuration configuration);

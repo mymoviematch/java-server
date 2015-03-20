@@ -13,7 +13,7 @@ public class Configuration {
 
     private static final Logger LOGGER = Logger.getLogger(Configuration.class);
 
-    private static final String DEFAULT_PROPERTY_FILE = "default.properties";
+    private static final String DEFAULT_PROPERTY_FILE = "/default.properties";
 
     private static final String CONFIG_FILE_PROPERTY = "configFile";
 

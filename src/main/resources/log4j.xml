@@ -9,13 +9,13 @@
     </appender>
 
     <appender name="file-all" class="org.apache.log4j.rolling.RollingFileAppender">
-        <param name="File" value="/var/log/server.log"/>
+        <param name="File" value="server.log"/>
         <param name="Append" value="true" />
         <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
-            <param name="activeFileName" value="/var/log/server.log"/>
-            <param name="fileNamePattern" value="/var/log/server-%d{yyyy-MM-dd}.log" />
+            <param name="activeFileName" value="server.log"/>
+            <param name="fileNamePattern" value="server-%d{yyyy-MM-dd}.log" />
             <!-- For hourly rotation change to below: -->
-            <!--<param name="fileNamePattern" value="/var/log/server.%d{yyyy-MM-dd.HH}.log" />-->
+            <!--<param name="fileNamePattern" value="server.%d{yyyy-MM-dd.HH}.log" />-->
         </rollingPolicy>
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%d{dd.MM.yyyy HH:mm:ss,SSS} [%t] %-5p %c - %m%n" />
@@ -23,11 +23,11 @@
     </appender>
 
     <appender name="file-db" class="org.apache.log4j.rolling.RollingFileAppender">
-        <param name="File" value="/var/log/db.log"/>
+        <param name="File" value="db.log"/>
         <param name="Append" value="true" />
         <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
-            <param name="activeFileName" value="/var/log/db.log"/>
-            <param name="fileNamePattern" value="/var/log/db-%d{yyyy-MM-dd}.log" />
+            <param name="activeFileName" value="db.log"/>
+            <param name="fileNamePattern" value="db-%d{yyyy-MM-dd}.log" />
         </rollingPolicy>
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%d{dd.MM.yyyy HH:mm:ss,SSS} [%t] %-5p %c - %m%n" />
@@ -35,11 +35,11 @@
     </appender>
 
     <appender name="file-web" class="org.apache.log4j.rolling.RollingFileAppender">
-        <param name="File" value="/var/log/web.log"/>
+        <param name="File" value="web.log"/>
         <param name="Append" value="true" />
         <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
-            <param name="activeFileName" value="/var/log/web.log"/>
-            <param name="fileNamePattern" value="/var/log/web-%d{yyyy-MM-dd}.log" />
+            <param name="activeFileName" value="web.log"/>
+            <param name="fileNamePattern" value="web-%d{yyyy-MM-dd}.log" />
         </rollingPolicy>
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%d{dd.MM.yyyy HH:mm:ss,SSS} [%t] %-5p %c - %m%n" />

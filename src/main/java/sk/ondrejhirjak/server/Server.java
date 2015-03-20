@@ -56,7 +56,7 @@ public class Server implements Runnable {
 
 
     private void start() {
-        modules.forEach((m) -> start());
+        modules.forEach((m) -> m.start());
 
         LOGGER.info("Server started.");
     }

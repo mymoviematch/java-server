@@ -4,3 +4,9 @@
 
 # Compiled files
 target
+
+# Generated files
+*.log
+
+# Misc
+set_java8.sh
