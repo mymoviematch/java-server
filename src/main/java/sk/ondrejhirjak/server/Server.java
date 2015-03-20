@@ -14,6 +14,8 @@ public class Server implements Runnable {
 
     private static final long SLEEP_TIME = 10000;
 
+    private Configuration configuration = new Configuration();
+
     private List<ServerModule> modules = new ArrayList<>();
 
     private volatile boolean shutdown = false;
@@ -45,8 +47,12 @@ public class Server implements Runnable {
     }
 
 
+    public void setConfiguration(Configuration configuration) {
+        this.configuration = configuration;
+    }
+
+
     private void init() {
-        Configuration configuration = new Configuration();
         configuration.init();
 
         modules.forEach((m) -> m.init(configuration));
