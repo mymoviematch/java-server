@@ -12,6 +12,7 @@ import sk.ondrejhirjak.module.ServerModule;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
 
@@ -26,7 +27,7 @@ public class DbContext implements ServerModule {
 
     private String resource;
 
-    private Set<Dao<?>> daos;
+    private Set<Dao<?>> daos = new HashSet<>();
 
 
     public DbContext(String resource) {
@@ -98,7 +99,14 @@ public class DbContext implements ServerModule {
     }
 
 
-    public void setDaos(Set<Dao<?>> daos) {
-        this.daos = daos;
+    public void addDao(Dao<?> dao) {
+        // TODO: fail to add daos after initialized
+        daos.add(dao);
+    }
+
+
+    public void addDaos(Set<Dao<?>> newDaos) {
+        // TODO: fail to add daos after initialized
+        daos.addAll(newDaos);
     }
 }
