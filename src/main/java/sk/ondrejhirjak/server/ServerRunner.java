@@ -2,10 +2,15 @@ package sk.ondrejhirjak.server;
 
 import org.apache.log4j.Logger;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
 
 public class ServerRunner {
 
     private static final Logger LOGGER = Logger.getLogger(ServerRunner.class);
+
+    private static final String SERVER_INITIALIZER_PROPERTY = "serverInitializer";
 
     private static Thread serverThread;
 
@@ -17,12 +22,38 @@ public class ServerRunner {
         registerShutdownHook();
 
         server = new Server();
-        serverThread = new Thread(server, "Server");
-        serverThread.start();
+
+        String className = System.getProperty(SERVER_INITIALIZER_PROPERTY);
+
+        if (className == null) {
+            LOGGER.error("No initializer classname provided. Set -D" + SERVER_INITIALIZER_PROPERTY + "=fullyQualifiedClassName");
+            return;
+        }
+
+        ServerInitializer initializer = null;
+
+        try {
+            Class c = Class.forName(className);
+            Constructor<ServerInitializer> constructor = c.getConstructor();
+            initializer = constructor.newInstance();
+        } catch (NoSuchMethodException | ClassNotFoundException | ClassCastException | InvocationTargetException | IllegalAccessException | InstantiationException e) {
+            LOGGER.error("Invalid initializer provided.", e);
+        }
+
+        if (initializer != null) {
+            initializer.addModules(server);
+
+            serverThread = new Thread(server, "Server");
+            serverThread.start();
+        }
     }
 
 
-    public static void shutdownServer() {
+    static void shutdownServer() {
+        if (serverThread == null) {
+            return;
+        }
+
         server.shutdown();
         serverThread.interrupt();
         try {
