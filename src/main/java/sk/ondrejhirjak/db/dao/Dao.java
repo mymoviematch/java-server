@@ -2,21 +2,24 @@ package sk.ondrejhirjak.db.dao;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public abstract class Dao<T> {
 
-    private static Dao<?> instance;
+    private static Map<Class<?>, Dao<?>> daos = new HashMap<>();
 
     protected SqlSessionFactory sqlSessionFactory;
 
 
     public void init(SqlSessionFactory sqlSessionFactory) {
         this.sqlSessionFactory = sqlSessionFactory;
-        instance = this;
+        daos.put(this.getClass(), this);
     }
 
 
-    public static Dao<?> getInstance() {
-        return instance;
+    public static <T> T getInstance(Class<?> daoClass) {
+        return (T) daos.get(daoClass);
     }
 }
