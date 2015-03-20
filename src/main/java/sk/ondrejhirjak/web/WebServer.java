@@ -10,6 +10,7 @@ import sk.ondrejhirjak.server.Configuration;
 import sk.ondrejhirjak.web.exception.PersistenceExceptionMapper;
 
 import java.net.URI;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -19,7 +20,7 @@ public class WebServer implements ServerModule {
 
     private String baseUri;
 
-    private Set<Class<?>> classes;
+    private Set<Class<?>> classes = new HashSet<>();
 
     private HttpServer server;
 
@@ -61,7 +62,14 @@ public class WebServer implements ServerModule {
     }
 
 
-    public void setClasses(Set<Class<?>> classes) {
-        this.classes = classes;
+    public void addResource(Class resourceClass) {
+        // TODO: fail to add classes after initialized
+        classes.add(resourceClass);
+    }
+
+
+    public void addResources(Set<Class<?>> resourceClasses) {
+        // TODO: fail to add classes after initialized
+        classes.addAll(resourceClasses);
     }
 }
