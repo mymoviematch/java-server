@@ -1,7 +1,11 @@
-package sk.ondrejhirjak.main;
+package sk.ondrejhirjak.server;
+
+import org.apache.log4j.Logger;
 
 
 public class ServerRunner {
+
+    private static final Logger LOGGER = Logger.getLogger(ServerRunner.class);
 
     private static Thread serverThread;
 
@@ -24,7 +28,7 @@ public class ServerRunner {
         try {
             serverThread.join();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            LOGGER.debug(e);
         }
     }
 

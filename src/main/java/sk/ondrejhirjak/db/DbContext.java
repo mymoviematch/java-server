@@ -6,7 +6,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.log4j.Logger;
 import org.flywaydb.core.Flyway;
 import sk.ondrejhirjak.db.dao.Dao;
-import sk.ondrejhirjak.main.Configuration;
+import sk.ondrejhirjak.server.Configuration;
+import sk.ondrejhirjak.module.ServerModule;
 
 import javax.sql.DataSource;
 import java.io.IOException;
@@ -15,7 +16,7 @@ import java.util.Properties;
 import java.util.Set;
 
 
-public class DbContext {
+public class DbContext implements ServerModule {
 
     private static final Logger LOGGER = Logger.getLogger(DbContext.class);
 
@@ -38,6 +39,7 @@ public class DbContext {
     }
 
 
+    @Override
     public void init(Configuration configuration) {
         InputStream inputStream = null;
         try {
@@ -57,6 +59,18 @@ public class DbContext {
                 dao.init(sqlSessionFactory);
             }
         }
+    }
+
+
+    @Override
+    public void start() {
+
+    }
+
+
+    @Override
+    public void stop() {
+
     }
 
 

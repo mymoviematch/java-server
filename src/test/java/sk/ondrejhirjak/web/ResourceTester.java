@@ -4,7 +4,7 @@ import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Before;
 import sk.ondrejhirjak.db.DbContext;
-import sk.ondrejhirjak.main.Configuration;
+import sk.ondrejhirjak.server.Configuration;
 
 import java.io.IOException;
 import java.io.InputStream;

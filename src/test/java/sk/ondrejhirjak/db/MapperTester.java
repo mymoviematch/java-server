@@ -1,7 +1,7 @@
 package sk.ondrejhirjak.db;
 
 import org.junit.Before;
-import sk.ondrejhirjak.main.Configuration;
+import sk.ondrejhirjak.server.Configuration;
 
 
 public class MapperTester {
