@@ -17,6 +17,8 @@ public class Configuration {
 
     private static final String CONFIG_FILE_PROPERTY = "configFile";
 
+    private String propertyFile;
+
     public String dbUrl;
 
     public String dbUser;
@@ -30,12 +32,22 @@ public class Configuration {
     public int webPort;
 
 
+    public Configuration(String propertyFile) {
+        this.propertyFile = propertyFile;
+    }
+
+
+    public Configuration() {
+        this(DEFAULT_PROPERTY_FILE);
+    }
+
+
     public void init() {
         Properties defaults = new Properties();
         Properties config = new Properties();
 
         try {
-            InputStream inputStream = getClass().getResourceAsStream(DEFAULT_PROPERTY_FILE);
+            InputStream inputStream = ClassLoader.getSystemResourceAsStream(propertyFile);
             defaults.load(inputStream);
 
             String fileName = System.getProperty(CONFIG_FILE_PROPERTY);
