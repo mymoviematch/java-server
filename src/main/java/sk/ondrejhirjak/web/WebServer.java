@@ -5,8 +5,8 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
+import sk.ondrejhirjak.conf.Configuration;
 import sk.ondrejhirjak.module.ServerModule;
-import sk.ondrejhirjak.server.Configuration;
 import sk.ondrejhirjak.web.exception.PersistenceExceptionMapper;
 
 import java.net.URI;

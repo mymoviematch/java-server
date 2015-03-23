@@ -1,6 +1,6 @@
 package sk.ondrejhirjak.module;
 
-import sk.ondrejhirjak.server.Configuration;
+import sk.ondrejhirjak.conf.Configuration;
 
 
 /**

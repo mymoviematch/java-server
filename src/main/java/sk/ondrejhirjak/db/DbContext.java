@@ -5,8 +5,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.log4j.Logger;
 import org.flywaydb.core.Flyway;
+import sk.ondrejhirjak.conf.Configuration;
 import sk.ondrejhirjak.db.dao.Dao;
-import sk.ondrejhirjak.server.Configuration;
 import sk.ondrejhirjak.module.ServerModule;
 
 import javax.sql.DataSource;
@@ -49,7 +49,7 @@ public class DbContext implements ServerModule {
             e.printStackTrace();
         }
 
-        LOGGER.info("Connecting to database url: '" + configuration.dbUrl + "' as user: '" + configuration.dbUser + "'");
+        LOGGER.info("Connecting to database url: '" + configuration.dbUrl + "' as user: '" + configuration.dbUsername + "'");
 
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream, buildDbProperties(configuration));
 
@@ -79,8 +79,8 @@ public class DbContext implements ServerModule {
         Properties dbProperties = new Properties();
 
         dbProperties.setProperty("db.url", configuration.dbUrl);
-        dbProperties.setProperty("db.username", configuration.dbUser);
-        dbProperties.setProperty("db.password", configuration.dbPass);
+        dbProperties.setProperty("db.username", configuration.dbUsername);
+        dbProperties.setProperty("db.password", configuration.dbPassword);
 
         return dbProperties;
     }

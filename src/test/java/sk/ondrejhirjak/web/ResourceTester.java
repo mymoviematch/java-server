@@ -4,7 +4,7 @@ import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Before;
 import sk.ondrejhirjak.db.DbContext;
-import sk.ondrejhirjak.server.Configuration;
+import sk.ondrejhirjak.conf.ConfigurationLoader;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,12 +16,12 @@ public class ResourceTester {
 
     @Before
     public void setUp() throws Exception {
-        Configuration configuration = new Configuration();
-        configuration.init();
+        ConfigurationLoader confLoader = new ConfigurationLoader();
+        confLoader.init();
         DbContext dbContext = new DbContext();
-        dbContext.init(configuration);
+        dbContext.init(confLoader.getConfiguration());
         webServer = new WebServer();
-        webServer.init(configuration);
+        webServer.init(confLoader.getConfiguration());
         webServer.start();
     }
 

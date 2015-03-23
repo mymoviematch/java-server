@@ -1,6 +1,7 @@
 package sk.ondrejhirjak.server;
 
 import org.apache.log4j.Logger;
+import sk.ondrejhirjak.conf.ConfigurationLoader;
 import sk.ondrejhirjak.module.ServerModule;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class Server implements Runnable {
 
     private static final long SLEEP_TIME = 10000;
 
-    private Configuration configuration = new Configuration();
+    private ConfigurationLoader confLoader = new ConfigurationLoader();
 
     private List<ServerModule> modules = new ArrayList<>();
 
@@ -47,15 +48,15 @@ public class Server implements Runnable {
     }
 
 
-    public void setConfiguration(Configuration configuration) {
-        this.configuration = configuration;
+    public void setConfigurationLoader(ConfigurationLoader confLoader) {
+        this.confLoader = confLoader;
     }
 
 
     private void init() {
-        configuration.init();
+        confLoader.init();
 
-        modules.forEach((m) -> m.init(configuration));
+        modules.forEach((m) -> m.init(confLoader.getConfiguration()));
 
         LOGGER.info("Server initialized.");
     }
