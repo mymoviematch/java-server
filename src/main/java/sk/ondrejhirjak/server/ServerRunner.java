@@ -41,7 +41,7 @@ public class ServerRunner {
         }
 
         if (initializer != null) {
-            initializer.addModules(server);
+            initializer.initServer(server);
 
             serverThread = new Thread(server, "Server");
             serverThread.start();

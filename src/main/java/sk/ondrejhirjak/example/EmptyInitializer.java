@@ -12,6 +12,6 @@ import sk.ondrejhirjak.server.ServerInitializer;
 public class EmptyInitializer implements ServerInitializer {
 
     @Override
-    public void addModules(Server server) {
+    public void initServer(Server server) {
     }
 }

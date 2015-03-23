@@ -8,5 +8,5 @@ package sk.ondrejhirjak.server;
  */
 public interface ServerInitializer {
 
-    void addModules(Server server);
+    void initServer(Server server);
 }
