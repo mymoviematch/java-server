@@ -26,6 +26,11 @@ class ServerSignalHandler implements SignalHandler {
     public void handle(Signal sig) {
         ServerRunner.shutdownServer();
 
+        debugLog(sig);
+    }
+
+
+    private void debugLog(Signal sig) {
         System.out.println("Diagnostic Signal handler called for signal "+sig);
         try {
             // Output information for each thread
