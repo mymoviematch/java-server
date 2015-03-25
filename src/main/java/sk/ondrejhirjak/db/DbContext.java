@@ -36,6 +36,11 @@ public class DbContext implements ServerModule {
     }
 
 
+    public DbContext(String resource) {
+        this(resource, null);
+    }
+
+
     public DbContext() {
         this(DEFAULT_RESOURCE, null);
     }
