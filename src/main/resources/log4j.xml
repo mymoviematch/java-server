@@ -56,6 +56,11 @@
         <appender-ref ref="file-db" />
     </logger>
 
+    <logger name="org.flywaydb" additivity="false">
+        <level value="trace"/>
+        <appender-ref ref="file-db" />
+    </logger>
+
     <logger name="sk.ondrejhirjak.db" additivity="false">
         <level value="trace"/>
         <appender-ref ref="file-db" />
