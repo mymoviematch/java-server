@@ -23,20 +23,21 @@ public class DbContext implements ServerModule {
 
     private static final String DEFAULT_RESOURCE = "db/mybatis.xml";
 
-    private static final String DB_SCRIPTS_PATH = "classpath:db/version/";
-
     private String resource;
+
+    private String versions;
 
     private Set<Dao<?>> daos = new HashSet<>();
 
 
-    public DbContext(String resource) {
+    public DbContext(String resource, String versions) {
         this.resource = resource;
+        this.versions = versions;
     }
 
 
     public DbContext() {
-        this(DEFAULT_RESOURCE);
+        this(DEFAULT_RESOURCE, null);
     }
 
 
@@ -65,13 +66,11 @@ public class DbContext implements ServerModule {
 
     @Override
     public void start() {
-
     }
 
 
     @Override
     public void stop() {
-
     }
 
 
@@ -91,6 +90,10 @@ public class DbContext implements ServerModule {
 
         if (configuration.dbAutoMigration) {
             Flyway flyway = new Flyway();
+
+            if (versions != null) {
+                flyway.setLocations(versions);
+            }
 
             flyway.setDataSource(dataSource);
 
