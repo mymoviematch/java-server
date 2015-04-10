@@ -61,12 +61,12 @@
         <appender-ref ref="file-db" />
     </logger>
 
-    <logger name="sk.ondrejhirjak.db" additivity="false">
+    <logger name="org.tchorworks.db" additivity="false">
         <level value="trace"/>
         <appender-ref ref="file-db" />
     </logger>
 
-    <logger name="sk.ondrejhirjak.web" additivity="false">
+    <logger name="org.tchorworks.web" additivity="false">
         <level value="trace"/>
         <appender-ref ref="file-web" />
     </logger>
