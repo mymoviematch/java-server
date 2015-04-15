@@ -18,10 +18,10 @@
         <java.version>1.8</java.version>
 
         <!-- Dependencies versions -->
-        <commons-io.version>2.4</commons-io.version>
         <org.mybatis.version>3.2.8</org.mybatis.version>
         <org.flywaydb.flyway-core.version>3.1</org.flywaydb.flyway-core.version>
         <org.glassfish.jersey.version>2.13</org.glassfish.jersey.version>
+        <commons-io.version>2.4</commons-io.version>
         <log4j.version>1.2.17</log4j.version>
 
         <!-- Test dependencies versions -->
@@ -34,13 +34,6 @@
     </properties>
 
     <dependencies>
-        <!-- Utils -->
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${commons-io.version}</version>
-        </dependency>
-
         <!-- DB -->
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -63,6 +56,13 @@
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-jackson</artifactId>
             <version>${org.glassfish.jersey.version}</version>
+        </dependency>
+
+        <!-- Utils -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
         </dependency>
 
         <!-- Logging -->
