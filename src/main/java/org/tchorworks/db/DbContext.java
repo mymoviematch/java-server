@@ -82,6 +82,7 @@ public class DbContext implements ServerModule {
     private Properties buildDbProperties(Configuration configuration) {
         Properties dbProperties = new Properties();
 
+        dbProperties.setProperty("db.driver", configuration.dbDriver);
         dbProperties.setProperty("db.url", configuration.dbUrl);
         dbProperties.setProperty("db.username", configuration.dbUsername);
         dbProperties.setProperty("db.password", configuration.dbPassword);

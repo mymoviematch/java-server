@@ -16,6 +16,7 @@ public class ConfigurationLoaderTest {
 
         Configuration conf = confLoader.getConfiguration();
 
+        assertThat(conf.dbDriver, is("db_driver"));
         assertThat(conf.dbUrl, is("jdbc:db_type://localhost:3306/db_schema"));
         assertThat(conf.dbUsername, is("db_username"));
         assertThat(conf.dbPassword, is("db_password"));

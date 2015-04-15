@@ -3,6 +3,8 @@ package org.tchorworks.conf;
 
 public class Configuration {
 
+    public String dbDriver;
+
     public String dbUrl;
 
     public String dbUsername;
