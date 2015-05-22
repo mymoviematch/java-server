@@ -7,7 +7,7 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.tchorworks.conf.Configuration;
 import org.tchorworks.module.ServerModule;
-import org.tchorworks.web.exception.PersistenceExceptionMapper;
+import org.tchorworks.web.exception.GenericExceptionMapper;
 
 import java.net.URI;
 import java.util.HashSet;
@@ -37,7 +37,7 @@ public class WebServer implements ServerModule {
 
         final ResourceConfig rc = new ResourceConfig();
         rc.registerClasses(JacksonFeature.class);
-        rc.registerClasses(PersistenceExceptionMapper.class);
+        rc.registerClasses(GenericExceptionMapper.class);
 
         if (classes != null) {
             rc.registerClasses(classes);
