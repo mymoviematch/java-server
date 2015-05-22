@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <RollingFile name="file-all" fileName="server.log" append="true" filePattern="server-%d{yyyy-MM-dd}.log">
+            <!--
+            For hourly rotation above parameter to below:
+            filePattern="server.%d{yyyy-MM-dd.HH}.log"
+            -->
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [%t] %-5p %c - %m%n" />
+            <TimeBasedTriggeringPolicy />
+        </RollingFile>
+        <RollingFile name="file-db" fileName="db.log" append="true" filePattern="db-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [%t] %-5p %c - %m%n" />
+            <TimeBasedTriggeringPolicy />
+        </RollingFile>
+        <RollingFile name="file-web" fileName="web.log" append="true" filePattern="web-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss,SSS} [%t] %-5p %c - %m%n" />
+            <TimeBasedTriggeringPolicy />
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="java.sql" level="trace" additivity="false">
+            <AppenderRef ref="file-db"/>
+        </Logger>
+        <Logger name="org.apache.ibatis" level="trace" additivity="false">
+            <AppenderRef ref="file-db"/>
+        </Logger>
+        <Logger name="org.flywaydb" level="trace" additivity="false">>
+            <AppenderRef ref="file-db"/>
+        </Logger>
+        <Logger name="org.tchorworks.db" level="trace" additivity="false">
+            <AppenderRef ref="file-db"/>
+        </Logger>
+        <Logger name="org.tchorworks.web" level="trace" additivity="false">
+            <AppenderRef ref="file-web"/>
+        </Logger>
+
+        <Root level="trace">
+            <AppenderRef ref="file-all" />
+        </Root>
+    </Loggers>
+</Configuration>

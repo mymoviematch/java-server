@@ -3,7 +3,8 @@ package org.tchorworks.db;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.flywaydb.core.Flyway;
 import org.tchorworks.conf.Configuration;
 import org.tchorworks.db.dao.Dao;
@@ -19,7 +20,7 @@ import java.util.Set;
 
 public class DbContext implements ServerModule {
 
-    private static final Logger LOGGER = Logger.getLogger(DbContext.class);
+    private static final Logger LOGGER = LogManager.getLogger(DbContext.class);
 
     private static final String DEFAULT_RESOURCE = "db/mybatis.xml";
 

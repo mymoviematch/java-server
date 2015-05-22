@@ -1,6 +1,7 @@
 package org.tchorworks.conf;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,7 +14,7 @@ import java.util.Properties;
 
 public class ConfigurationLoader {
 
-    private static final Logger LOGGER = Logger.getLogger(ConfigurationLoader.class);
+    private static final Logger LOGGER = LogManager.getLogger(ConfigurationLoader.class);
 
     private static final String DEFAULT_PROPERTY_FILE = "/default.properties";
 

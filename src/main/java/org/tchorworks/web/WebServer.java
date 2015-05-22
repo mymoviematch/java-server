@@ -1,6 +1,7 @@
 package org.tchorworks.web;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.jackson.JacksonFeature;
@@ -16,7 +17,7 @@ import java.util.Set;
 
 public class WebServer implements ServerModule {
 
-    private static final Logger LOGGER = Logger.getLogger(WebServer.class);
+    private static final Logger LOGGER = LogManager.getLogger(WebServer.class);
 
     private String baseUri;
 

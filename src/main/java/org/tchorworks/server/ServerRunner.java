@@ -1,6 +1,7 @@
 package org.tchorworks.server;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -8,7 +9,11 @@ import java.lang.reflect.InvocationTargetException;
 
 public class ServerRunner {
 
-    private static final Logger LOGGER = Logger.getLogger(ServerRunner.class);
+    static {
+        configureLogging();
+    }
+
+    private static final Logger LOGGER = LogManager.getLogger(ServerRunner.class);
 
     private static final String SERVER_INITIALIZER_PROPERTY = "serverInitializer";
 
@@ -61,6 +66,11 @@ public class ServerRunner {
         } catch (InterruptedException e) {
             LOGGER.debug(e);
         }
+    }
+
+
+    private static void configureLogging() {
+        System.setProperty("java.util.logging.manager", "org.apache.logging.log4j.jul.LogManager");
     }
 
 
