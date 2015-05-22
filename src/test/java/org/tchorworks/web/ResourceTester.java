@@ -32,7 +32,7 @@ public class ResourceTester {
     }
 
 
-    protected String readResource(final String name) throws IOException {
+    protected String readResource(String name) throws IOException {
         try (InputStream is = getClass().getResourceAsStream(name)) {
             return IOUtils.toString(is);
         }

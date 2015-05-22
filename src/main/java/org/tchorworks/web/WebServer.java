@@ -33,9 +33,8 @@ public class WebServer implements ServerModule {
 
     @Override
     public void start() {
-        // TODO hiro: Log grizzly to log file
+        ResourceConfig rc = new ResourceConfig();
 
-        final ResourceConfig rc = new ResourceConfig();
         rc.registerClasses(JacksonFeature.class);
         rc.registerClasses(GenericExceptionMapper.class);
 
@@ -53,7 +52,7 @@ public class WebServer implements ServerModule {
     public void stop() {
         server.shutdownNow();
 
-        // TODO hiro: Wait for server to shutdown
+        // TODO: Wait for server to shutdown
     }
 
 
