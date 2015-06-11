@@ -9,4 +9,3 @@ target
 *.log
 
 # Misc
-set_java8.sh
