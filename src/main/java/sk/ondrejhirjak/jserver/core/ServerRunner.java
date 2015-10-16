@@ -1,4 +1,4 @@
-package sk.ondrejhirjak.jserver.server;
+package sk.ondrejhirjak.jserver.core;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

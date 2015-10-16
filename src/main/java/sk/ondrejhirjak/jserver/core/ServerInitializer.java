@@ -1,4 +1,4 @@
-package sk.ondrejhirjak.jserver.server;
+package sk.ondrejhirjak.jserver.core;
 
 
 /**

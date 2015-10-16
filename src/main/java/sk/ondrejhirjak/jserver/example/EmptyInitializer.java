@@ -1,7 +1,7 @@
 package sk.ondrejhirjak.jserver.example;
 
-import sk.ondrejhirjak.jserver.server.Server;
-import sk.ondrejhirjak.jserver.server.ServerInitializer;
+import sk.ondrejhirjak.jserver.core.Server;
+import sk.ondrejhirjak.jserver.core.ServerInitializer;
 
 
 /**

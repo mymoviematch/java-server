@@ -1,4 +1,4 @@
-package sk.ondrejhirjak.jserver.server;
+package sk.ondrejhirjak.jserver.core;
 
 import sun.misc.Signal;
 import sun.misc.SignalHandler;
