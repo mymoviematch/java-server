@@ -8,8 +8,6 @@ Compile with:
 mvn clean install
 ```
 
-```
-
 Run locally:
 
 ```
