@@ -22,6 +22,8 @@ public class Server implements Runnable {
 
     private volatile boolean shutdown = false;
 
+    private boolean initialized = false;
+
 
     @Override
     public void run() {
@@ -38,13 +40,19 @@ public class Server implements Runnable {
 
 
     public void addModule(ServerModule module) {
-        // TODO: fail to add modules after initialized
+        if (initialized) {
+            throw new RuntimeException("Cannot add module, server already initialized.");
+        }
+
         modules.add(module);
     }
 
 
     public void addModules(List<ServerModule> newModules) {
-        // TODO: fail to add modules after initialized
+        if (initialized) {
+            throw new RuntimeException("Cannot add modules, server already initialized.");
+        }
+
         modules.addAll(newModules);
     }
 
@@ -58,6 +66,8 @@ public class Server implements Runnable {
         confLoader.init();
 
         modules.forEach((m) -> m.init(confLoader.getConfiguration()));
+
+        initialized = true;
 
         LOGGER.info("Server initialized.");
     }

@@ -25,10 +25,14 @@ public class WebServer implements ServerModule {
 
     private HttpServer server;
 
+    private boolean initialized = false;
+
 
     @Override
     public void init(Configuration configuration) {
         baseUri = "http://" + configuration.webHost + ":" + configuration.webPort + "/";
+
+        initialized = true;
     }
 
 
@@ -63,13 +67,19 @@ public class WebServer implements ServerModule {
 
 
     public void addResource(Class resourceClass) {
-        // TODO: fail to add classes after initialized
+        if (initialized) {
+            throw new RuntimeException("Cannot add resource, web server already initialized.");
+        }
+
         classes.add(resourceClass);
     }
 
 
     public void addResources(Set<Class<?>> resourceClasses) {
-        // TODO: fail to add classes after initialized
+        if (initialized) {
+            throw new RuntimeException("Cannot add resources, web server already initialized.");
+        }
+
         classes.addAll(resourceClasses);
     }
 }

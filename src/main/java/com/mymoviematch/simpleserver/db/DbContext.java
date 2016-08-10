@@ -30,6 +30,8 @@ public class DbContext implements ServerModule {
 
     private Set<Dao<?>> daos = new HashSet<>();
 
+    private boolean initialized = false;
+
 
     public DbContext(String resource, String versions) {
         this.resource = resource;
@@ -67,6 +69,8 @@ public class DbContext implements ServerModule {
                 dao.init(sqlSessionFactory);
             }
         }
+
+        initialized = true;
     }
 
 
@@ -110,13 +114,19 @@ public class DbContext implements ServerModule {
 
 
     public void addDao(Dao<?> dao) {
-        // TODO: fail to add daos after initialized
+        if (initialized) {
+            throw new RuntimeException("Cannot add DAO, DB context already initialized.");
+        }
+
         daos.add(dao);
     }
 
 
     public void addDaos(Set<Dao<?>> newDaos) {
-        // TODO: fail to add daos after initialized
+        if (initialized) {
+            throw new RuntimeException("Cannot add DAOs, DB context already initialized.");
+        }
+
         daos.addAll(newDaos);
     }
 }
