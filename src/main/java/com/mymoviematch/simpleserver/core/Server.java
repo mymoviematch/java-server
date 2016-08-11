@@ -41,16 +41,16 @@ public class Server implements Runnable {
 
     public void addModule(ServerModule module) {
         if (initialized) {
-            throw new RuntimeException("Cannot add module, server already initialized.");
+            throw new ServerException("Cannot add module, server already initialized.");
         }
 
         modules.add(module);
     }
 
 
-    public void addModules(List<ServerModule> newModules) {
+    public <T extends ServerModule> void addModules(List<T> newModules) {
         if (initialized) {
-            throw new RuntimeException("Cannot add modules, server already initialized.");
+            throw new ServerException("Cannot add modules, server already initialized.");
         }
 
         modules.addAll(newModules);
@@ -65,7 +65,7 @@ public class Server implements Runnable {
     private void init() {
         confLoader.init();
 
-        modules.forEach((m) -> m.init(confLoader.getConfiguration()));
+        modules.forEach(m -> m.init(confLoader.getConfiguration()));
 
         initialized = true;
 
@@ -74,7 +74,7 @@ public class Server implements Runnable {
 
 
     private void start() {
-        modules.forEach((m) -> m.start());
+        modules.forEach(ServerModule::start);
 
         LOGGER.info("Server started.");
     }
@@ -95,7 +95,7 @@ public class Server implements Runnable {
         List<ServerModule> modulesR = new ArrayList<>(modules);
 
         Collections.reverse(modulesR);
-        modulesR.forEach((m) -> m.stop());
+        modulesR.forEach(ServerModule::stop);
 
         LOGGER.info("Server stopped.");
     }
