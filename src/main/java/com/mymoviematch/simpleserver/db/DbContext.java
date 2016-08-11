@@ -65,9 +65,7 @@ public class DbContext implements ServerModule {
         migrateDb(sqlSessionFactory.getConfiguration().getEnvironment().getDataSource(), configuration);
 
         if (daos != null) {
-            for (Dao<?> dao : daos) {
-                dao.init(sqlSessionFactory);
-            }
+            daos.forEach(dao -> dao.init(sqlSessionFactory));
         }
 
         initialized = true;
