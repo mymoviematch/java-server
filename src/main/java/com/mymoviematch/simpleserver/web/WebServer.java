@@ -56,8 +56,6 @@ public class WebServer implements ServerModule {
     @Override
     public void stop() {
         server.shutdownNow();
-
-        // TODO: Wait for server to shutdown
     }
 
 
