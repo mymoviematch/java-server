@@ -26,16 +26,16 @@ public class DbContext implements ServerModule {
 
     private String resource;
 
-    private String versions;
+    private String[] locations;
 
     private Set<Dao<?>> daos = new HashSet<>();
 
     private boolean initialized = false;
 
 
-    public DbContext(String resource, String versions) {
+    public DbContext(String resource, String ... locations) {
         this.resource = resource;
-        this.versions = versions;
+        this.locations = locations;
     }
 
 
@@ -100,8 +100,8 @@ public class DbContext implements ServerModule {
         if (configuration.dbAutoMigration) {
             Flyway flyway = new Flyway();
 
-            if (versions != null) {
-                flyway.setLocations(versions);
+            if (locations != null) {
+                flyway.setLocations(locations);
             }
 
             flyway.setDataSource(dataSource);
